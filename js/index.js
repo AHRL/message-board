@@ -31,25 +31,24 @@ window.onload=function () {
     //         oPass.type = 'text';
     //         oPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
     //     }
-    // }
-    oCover.onclick = function () {
-        if (oPassWord.type === 'text') {
-            oPassWord.type = 'password';
-            oLitPic.className = 'glyphicon glyphicon-eye-open form-control-feedback';
-        } else {
-            oPassWord.type = 'text';
-            oLitPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
-        }
-    }
-    oCover1.onclick = function () {
+    oCover.onclick = function(){
         if (oPassWord1.type === 'text') {
             oPassWord1.type = 'password';
             oLitPic1.className = 'glyphicon glyphicon-eye-open form-control-feedback';
         } else {
             oPassWord1.type = 'text';
-            oLitPic1.className = 'glyphicon glyphicon-eye-close form-control-feedback';
+            oLitPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
         }
-    }
+    };
+    oCover1.onclick = function(){
+        if (oPassWord1.type === 'text') {
+            oPassWord1.type = 'password';
+            oLitPic1.className = 'glyphicon glyphicon-eye-open form-control-feedback';
+        } else {
+            oPassWord1.type = 'text';
+            oLitPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
+        }
+    };
     //number warning
     // function countChar(textareaName,spanName){
     //     document.getElementById(spanName).innerHTML = document.getElementById(textareaName).value.length;
@@ -57,10 +56,10 @@ window.onload=function () {
     // }
     oWord.onkeydown = function countChar(){
         document.getElementById("counter").innerHTML = document.getElementById("word").value.length;
-    }
+    };
     oWord.onkeyup = function countChar(){
         document.getElementById("counter").innerHTML = document.getElementById("word").value.length;
-    }
+    };
     //publish
     oPub.onclick = function () {
         if(oWord.value === '') {
@@ -98,13 +97,22 @@ window.onload=function () {
             curBodyDivImg.setAttribute('title','评论');
             curBodyDivImg.className = 'com';
             curBodyDivImg.onclick = function () {
-                    var oTextarea = document.createElement('textarea');
-                    oTextarea.style.marginTop = '10px';
-                    oTextarea.style.width = '100%';
-                    oTextarea.style.height = '60px';
-                    oTextarea.style.resize = 'none';
-                    this.parentNode.appendChild(oTextarea);
-            }
+                var oForm = document.createElement('form');
+                oForm.setAttribute('action','');
+                oForm.setAttribute('method','');
+                var oTextarea = document.createElement('textarea');
+                oTextarea.style.marginTop = '10px';
+                oTextarea.style.width = '100%';
+                oTextarea.style.height = '60px';
+                oTextarea.style.resize = 'none';
+                var oComBtn = document.createElement('input');
+                oComBtn.setAttribute('type','submit');
+                oComBtn.className = 'btn btn-default pull-right';
+                oComBtn.value = '评论';
+                oForm.appendChild(oTextarea);
+                oForm.appendChild(oComBtn);
+                this.parentNode.appendChild(oForm);
+            };
             var curBodyDivTime = document.createElement('time');
             var oDate = new Date();
             curBodyDivTime.innerHTML = oDate.toLocaleDateString();
@@ -122,21 +130,40 @@ window.onload=function () {
     //comment
     var aCommentImg = document.getElementsByClassName('com');
     for(var i = 0;i < aCommentImg.length;i ++){
+        // aCommentImg[i].flag = 0;
+        aCommentImg[i].flag = true;
         aCommentImg[i].onclick = function () {
-            // var FirstP = this.parentNode.parentNode.firstChild;
-            var oTextarea = document.createElement('textarea');
-            // var oTextareaParent = document.createElement('div');
-            oTextarea.style.marginTop = '10px';
-            oTextarea.style.width = '100%';
-            oTextarea.style.height = '60px';
-            oTextarea.style.resize = 'none';
-            this.parentNode.appendChild(oTextarea);
-
-            // if(aCommentLi.length === 0)
-            // {
-            //     var oHr = document.createElement('hr');
-            //
-            // }
+            if(this.flag)
+            {
+                var oForm = document.createElement('form');
+                oForm.setAttribute('action','');
+                oForm.setAttribute('method','');
+                var oTextarea = document.createElement('textarea');
+                oTextarea.style.marginTop = '10px';
+                oTextarea.style.width = '100%';
+                oTextarea.style.height = '60px';
+                oTextarea.style.resize = 'none';
+                oTextarea.setAttribute('maxlength','300');
+                var oComCancel = document.createElement('input');
+                oComCancel.setAttribute('type','button');
+                oComCancel.className = 'btn btn-default pull-right';
+                oComCancel.value = '取消';
+                oComCancel.style.marginRight = '10px';
+                oComCancel.onclick = function () {
+                    var oLastChild = this.parentNode.parentNode.lastElementChild;
+                    this.parentNode.parentNode.removeChild(oLastChild);
+                    this.flag = true;
+                }
+                var oComSub = document.createElement('input');
+                oComSub.setAttribute('type','submit');
+                oComSub.className = 'btn btn-default pull-right';
+                oComSub.value = '评论';
+                oForm.appendChild(oTextarea);
+                oForm.appendChild(oComSub);
+                oForm.appendChild(oComCancel);
+                this.parentNode.appendChild(oForm);
+                this.flag = false;
+            }
         }
     }
     //delete
