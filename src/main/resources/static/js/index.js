@@ -32,11 +32,11 @@ window.onload=function () {
     //         oPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
     //     }
     oCover.onclick = function(){
-        if (oPassWord.type === 'text') {
-            oPassWord.type = 'password';
-            oLitPic.className = 'glyphicon glyphicon-eye-open form-control-feedback';
+        if (oPassWord1.type === 'text') {
+            oPassWord1.type = 'password';
+            oLitPic1.className = 'glyphicon glyphicon-eye-open form-control-feedback';
         } else {
-            oPassWord.type = 'text';
+            oPassWord1.type = 'text';
             oLitPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
         }
     };
@@ -46,7 +46,7 @@ window.onload=function () {
             oLitPic1.className = 'glyphicon glyphicon-eye-open form-control-feedback';
         } else {
             oPassWord1.type = 'text';
-            oLitPic1.className = 'glyphicon glyphicon-eye-close form-control-feedback';
+            oLitPic.className = 'glyphicon glyphicon-eye-close form-control-feedback';
         }
     };
     //number warning

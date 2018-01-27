@@ -13,26 +13,146 @@ var get = {
       "id": 1
    }
 }
-var post = [
-    {
-        "word":"我是田宇",
-        "type":1
-    },
-    {
-        "com":"我是第一条评论",
-        "comment":1,
-        "order":1
-    },
-    {
-        "com":"我是第二条评论",
-        "comment":1,
-        "order":2
-    },
-    {
-      "word":"hhhhh",
-      "type":2
-    }
-]
+var post = {
+    "message" : [
+        {
+            "author": "aa",
+            "date": "2018-1-13",
+            "content": "hello world",
+            "index":0,
+            "comment": [
+                {
+                    "author": "b",
+                    "date": '2017-1-13',
+                    "content": 'alsl'
+                },{
+                    "author": "c",
+                    "date": '2017-1-13',
+                    "content": 'cc'
+                }
+            ]
+        },
+        {
+            "author": "bb",
+            "date": "2018-1-13",
+            "content": "this is bb",
+            "index":1,
+            "comment": [
+                {
+                    "author": "d",
+                    "date": '2017-1-13',
+                    "content": 'd'
+                },{
+                    "author": "f",
+                    "date": '2017-1-13',
+                    "content": 'f'
+                }
+            ]
+        },
+        {
+            "author": "hh",
+            "date": "2018-1-13",
+            "content": "this is hh",
+            "index":2,
+            "comment": [
+                {
+                    "author": "1",
+                    "date": '2017-1-13',
+                    "content": '1'
+                },{
+                    "author": "2",
+                    "date": '2017-1-13',
+                    "content": 'f'
+                }, {
+                    "author": "3",
+                    "date": '2017-1-13',
+                    "content": 'f'
+                },{
+                    "author": "4",
+                    "date": '2017-1-13',
+                    "content": 'f'
+                },{
+                    "author": "5",
+                    "date": '2017-1-13',
+                    "content": 'f'
+                },{
+                    "author": "6",
+                    "date": '2017-1-13',
+                    "content": 'f'
+                }
+            ]
+        },
+        {
+            "author": "ee",
+            "date": "2018-1-17",
+            "content": "hello world",
+            "index":0,
+            "comment": [
+                {
+                    "author": "b",
+                    "date": '2017-1-13',
+                    "content": 'alsl'
+                },{
+                    "author": "c",
+                    "date": '2017-1-13',
+                    "content": 'cc'
+                }
+            ]
+        },
+        {
+            "author": "ff",
+            "date": "2018-1-13",
+            "content": "hello world",
+            "index":0,
+            "comment": [
+                {
+                    "author": "b",
+                    "date": '2017-1-13',
+                    "content": 'alsl'
+                },{
+                    "author": "c",
+                    "date": '2017-1-13',
+                    "content": 'cc'
+                }
+            ]
+        },
+        {
+            "author": "gg",
+            "date": "2018-1-13",
+            "content": "hello world",
+            "index":0,
+            "comment": [
+                {
+                    "author": "b",
+                    "date": '2017-1-13',
+                    "content": 'alsl'
+                },{
+                    "author": "c",
+                    "date": '2017-1-13',
+                    "content": 'cc'
+                }
+            ]
+        },
+        {
+            "author": "mm",
+            "date": "2018-1-13",
+            "content": "hello world",
+            "index":0,
+            "comment": [
+                {
+                    "author": "b",
+                    "date": '2017-1-13',
+                    "content": 'alsl'
+                },{
+                    "author": "c",
+                    "date": '2017-1-13',
+                    "content": 'cc'
+                }
+            ]
+        }
+    ]
+}
+
 
 app.get('/', function (req, res) {
    res.send('hello wolrd');
