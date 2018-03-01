@@ -1,26 +1,19 @@
 //点击密码是否可见
-$('#cover').on('click',function () {
-    var oPassWord = $('#password');
-    var oLitPic = $('#little_pic');
-    if(oPassWord.attr('type') === 'text'){
-        oPassWord.attr('type','password');
-        oLitPic.attr('class','glyphicon glyphicon-eye-open form-control-feedback')
-    }else{
-        oPassWord.attr('type','text');
-        oLitPic.attr('class','glyphicon glyphicon-eye-close form-control-feedback')
-    }
-})
-$('#cover1').on('click',function () {
-    var oPassWord1 = $('#password1');
-    var oLitPic1 = $('#little_pic1');
-    if(oPassWord1.attr('type') === 'text'){
-        oPassWord1.attr('type','password');
-        oLitPic1.attr('class','glyphicon glyphicon-eye-open form-control-feedback')
-    }else{
-        oPassWord1.attr('type','text');
-        oLitPic1.attr('class','glyphicon glyphicon-eye-close form-control-feedback')
-    }
-})
+function pwVisible($el,$pwId,$picId) {
+    $('#'+$el).on('click',function () {
+        var oPassWord = $('#'+$pwId);
+        var oLitPic = $('#'+$picId);
+        if(oPassWord.attr('type') === 'text'){
+            oPassWord.attr('type','password');
+            oLitPic.attr('class','glyphicon glyphicon-eye-open form-control-feedback')
+        }else{
+            oPassWord.attr('type','text');
+            oLitPic.attr('class','glyphicon glyphicon-eye-close form-control-feedback')
+        }
+    })
+}
+pwVisible('cover','password','little_pic');
+pwVisible('cover1','password1','little_pic1');
 // 统计输入框已输入字数
 var oWord = $('#word');
 oWord.on('keydown',function () {
@@ -53,41 +46,20 @@ $(function () {
 })
 //登录注册验证
 var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,}$/;
-$('#myLogin input').eq(0).on('blur',function () {
-    if($(this).val() == ''){
-        $('.prompt').eq(0).css('visibility','visible');
-    }else{
-        $('.prompt').eq(0).css('visibility','hidden');
-    }
-})
-$('#myLogin input').eq(1).on('blur',function () {
-    if($(this).val() == ''){
-        $('.prompt').eq(1).css('visibility','visible');
-    }else{
-        $('.prompt').eq(1).css('visibility','hidden');
-    }
-})
-$('#mySign input').eq(0).on('blur',function () {
-    if($(this).val().indexOf(' ') != -1 || $(this).val() == ''){
-        $('.prompt').eq(2).css('visibility','visible');
-    }else{
-        $('.prompt').eq(2).css('visibility','hidden');
-    }
-})
-$('#mySign input').eq(1).on('blur',function () {
-    if(!reg.test($(this).val()) || $(this).val() == ''){
-        $('.prompt').eq(3).css('visibility','visible');
-    }else{
-        $('.prompt').eq(3).css('visibility','hidden');
-    }
-})
-$('#mySign input').eq(2).on('blur',function () {
-    if($(this).val() == ''){
-        $('.prompt').eq(4).css('visibility','visible');
-    }else{
-        $('.prompt').eq(4).css('visibility','hidden');
-    }
-})
+function promptBlur($target,i,j) {
+    $('#'+$target+' input').eq(i).on('blur',function () {
+        if($(this).val() == ''){
+            $('.prompt').eq(j).css('visibility','visible');
+        }else{
+            $('.prompt').eq(j).css('visibility','hidden');
+        }
+    })
+}
+promptBlur('myLogin',0,0);
+promptBlur('myLogin',1,1);
+promptBlur('mySign',0,2);
+promptBlur('mySign',1,3);
+promptBlur('mySign',2,4);
 //提交注册信息并跳转页面
 $('.signBtn:first').on('click',function () {
     var signInput = $('#mySign input');

@@ -146,7 +146,7 @@ function request(firstLength) {
             })
         },
         error:function () {
-
         }
     })
 }
+request(firstLength);
