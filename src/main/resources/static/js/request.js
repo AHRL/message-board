@@ -150,3 +150,4 @@ function request(firstLength) {
         }
     })
 }
+request(firstLength);
